@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management Dashboard</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Sidebar Section -->
+    <div class="container">
+        <!-- Menu button for mobile -->
+        <button class="menu-btn" id="menuBtn" onclick="">☰</button>
+
+        <nav class="sidebar invisible" id="sidebar">
+            <ul>
+                <li class="nav-item">
+                    <div class="logo" id="logo">
+                        <span class="nav-text"></span> <!-- Show logo text here -->
+                    </div>
+                </li>
+                <!-- Other nav items are hidden by default due to CSS -->
+                <li class="nav-item"><a href="#"><img class="icon" src="assets/sidebar-icons/home.svg"
+                            alt="Home Icon"><span class="nav-text">Home</span></a></li>
+                <li class="nav-item"><a href="#"><img class="icon" src="assets/sidebar-icons/event.svg"
+                            alt="Event Icon"> <span class="nav-text">Events</span></a></li>
+                <li class="nav-item"><a href="#"><img class="icon" src="assets/sidebar-icons/speakers.svg"
+                            alt="Speaker Icon">
+                        <span class="nav-text">Speakers</span></a></li>
+                <li class="nav-item"><a href="#"><img class="icon" src="assets/sidebar-icons/reports.svg"
+                            alt="Reports Icon">
+                        <span class="nav-text">Reports</span></a></li>
+                <li class="nav-item"><a href="#"><img class="icon" src="assets/sidebar-icons/bell.svg"
+                            alt="Notifications Icon">
+                        <span class="nav-text">Notifications</span></a></li>
+                <li class="nav-item"><a href="#"><img class="icon" src="assets/sidebar-icons/messages.svg"
+                            alt="Messages Icon">
+                        <span class="nav-text">Messages</span></a></li>
+                <li class="nav-item"><a href="#"><img class="icon" src="assets/sidebar-icons/settings.svg"
+                            alt="Settings Icon">
+                        <span class="nav-text">Settings</span></a></li>
+                <li class="nav-item dark-mode-item">
+                    <label class="switch">
+                        <input type="checkbox" id="dark-mode-toggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="nav-text">Dark Mode</span>
+                </li>
+                <li class="nav-item">
+                    <a href="#">
+                        <img class="icon" src="assets/sidebar-icons/avatar.svg" alt="Avatar Icon">
+                        <span class="nav-text">Rudra Devi <br> <span
+                                class="nav-email">rudra.devi@gmail.com</span></span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Dashboard Section -->
+        <main class="dashboard">
+            <div class="dashboard-header">
+                <h3>Welcome! Here's your Summary</h3>
+            </div>
+
+            <!-- Summary Section -->
+            <div class="summary">
+                <div class="summary-item">
+                    <h3>Total Events <img class="summary-info" src="assets/sidebar-icons/information.svg"
+                            alt="Info Icon" /></h3>
+                    <p>100,000 <span class="trend"><img class="trend-icon" src="assets/sidebar-icons/Bullish.svg"
+                                alt="left" />
+                            +5.0%</span></p>
+                </div>
+                <div class="summary-item">
+                    <h3>Active Speakers <span><img class="summary-info" src="assets/sidebar-icons/information.svg"
+                                alt="Info Icon" /></span></h3>
+                    <p>25 <span class="trend"><img class="trend-icon" src="assets/sidebar-icons/Bearish.svg"
+                                alt="left" />
+                            -5.0%</span></p>
+                </div>
+                <div class="summary-item">
+                    <h3>Total Registrations<img class="summary-info" src="assets/sidebar-icons/information.svg"
+                            alt="Info Icon" />
+                    </h3>
+                    <p>300 <span class="trend"><img class="trend-icon" src="assets/sidebar-icons/Bullish.svg"
+                                alt="left" />
+                            +5.0%</span></p>
+                </div>
+                <div class="summary-item">
+                    <h3>Total Revenue <img class="summary-info" src="assets/sidebar-icons/information.svg"
+                            alt="Info Icon" /></h3>
+                    <p>$500,000 <span class="trend"><img class="trend-icon" src="assets/sidebar-icons/Bullish.svg"
+                                alt="left" />
+                            +5.0%</span></p>
+                </div>
+            </div>
+
+            <h2 class="chart-header">Event Registrations per Month</h2>
+            <div class="chart-row">
+                <!-- Chart Section -->
+                <div class="chart">
+                    <canvas id="eventChart"></canvas>
+                </div>
+
+                <div class="slider-container">
+                    <!-- Dots for navigation -->
+                    <div class="dots-container">
+                        <span class="dot" onclick="setCurrentSlide(1)"></span>
+                        <span class="dot" onclick="setCurrentSlide(2)"></span>
+                        <span class="dot" onclick="setCurrentSlide(3)"></span>
+                    </div>
+
+                    <!-- Slide 1 -->
+                    <div class="slide fade">
+                        <img src="assets/images/image.png" alt="Image 1">
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="slide fade">
+                        <img src="assets/images/image2.jpg" alt="Image 2">
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="slide fade">
+                        <img src="assets/images/image3.jpg" alt="Image 3">
+                    </div>
+
+                    <div class="overlay-text">
+                        <h4>Latest News & Updates</h4>
+                        <p>Turpis interdum nunc varius ornare dignissim pretium. Massa ornare quis aliquet sed vitae.
+                            Sed velit nisi, fermentum
+                            erat. Fringilla purus, erat fringilla tincidunt quisque non. Pellentesque in ut tellus.</p>
+                    </div>
+
+                    <!-- Navigation Arrows -->
+                    <a class="prev" onclick="changeSlide(-1)"><img src="assets/sidebar-icons/chevron-left.svg"
+                            alt="left" /></a>
+                    <a class="next" onclick="changeSlide(1)"><img src="assets/sidebar-icons/chevron-right.svg"
+                            alt="right" /></a>
+                </div>
+            </div>
+
+            <!-- Events History Table -->
+            <h2>Events History</h2>
+            <div class="filter-bar">
+                <input type="text" id="eventNameSearch" placeholder="Search Event Name">
+                <input type="date" id="dateFilter">
+                <select id="statusFilter" class="status-filter">
+                    <option value="">Status</option>
+                    <option value="Completed">Completed</option>
+                    <option value="In Progress">In Progress</option>
+                </select>
+                <input type="text" id="speakerFilter" placeholder="Search Speaker">
+                <div class="right-controls">
+                    <select id="sortBy">
+                        <option value="mostRecent">Most Recent</option>
+                        <option value="eventNameAsc">Event Name (A-Z)</option>
+                        <option value="eventNameDesc">Event Name (Z-A)</option>
+                    </select>
+                    <button id="moreOptions">...</button>
+                    <button id="exportButton">Export</button>
+                </div>
+            </div>
+
+            <table id="eventsTable" class="event-history">
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Date</th>
+                        <th>Speaker</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cloud Innovation Summit</td>
+                        <td>2024-10-15</td>
+                        <td>Jane Doe</td>
+                        <td><span class="badge completed">Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td>Blockchain Revolution Conference</td>
+                        <td>2024-11-05</td>
+                        <td>Dr. Peter Smith</td>
+                        <td><span class="badge in-progress">In Progress</span></td>
+                    </tr>
+                    <tr>
+                        <td>AI in Healthcare Symposium</td>
+                        <td>2024-12-01</td>
+                        <td>Dr. Aisha Malik</td>
+                        <td><span class="badge completed">Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td>Future of Fintech Forum</td>
+                        <td>2024-10-25</td>
+                        <td>John Lee</td>
+                        <td><span class="badge completed">Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td>Data Analytics in Business</td>
+                        <td>2024-11-12</td>
+                        <td>Rachel Moore</td>
+                        <td><span class="badge completed">Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td>Sustainable Energy Expo</td>
+                        <td>2024-09-28</td>
+                        <td>Prof. Alan Green</td>
+                        <td><span class="badge completed">Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td>Web3 Interfaces Workshop</td>
+                        <td>2024-10-10</td>
+                        <td>Kevin Adams</td>
+                        <td><span class="badge in-progress">In Progress</span></td>
+                    </tr>
+                    <tr>
+                        <td>Cybersecurity for Startups</td>
+                        <td>2024-11-19</td>
+                        <td>Emily Zhang</td>
+                        <td><span class="badge completed">Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td>Smart Cities Forum</td>
+                        <td>2024-10-18</td>
+                        <td>Dr. Maria Hernandez</td>
+                        <td><span class="badge in-progress">In Progress</span></td>
+                    </tr>
+                    <tr>
+                        <td>Tech Safari Mixer</td>
+                        <td>2024-09-30</td>
+                        <td>Guest Panel</td>
+                        <td><span class="badge in-progress">In Progress</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+        <!-- <script>
+            $(document).ready(function () {
+                $('#eventsTable').DataTable();
+            });
+        </script> -->
+        <script>
+            document.querySelectorAll('.trend').forEach(function (trendElement) {
+                const trendIcon = trendElement.querySelector('.trend-icon');
+
+                if (trendIcon.src.includes('Bullish')) {
+                    trendElement.classList.add('trend-bullish'); // Add class for green
+                } else if (trendIcon.src.includes('Bearish')) {
+                    trendElement.classList.add('trend-bearish'); // Add class for red
+                }
+            });
+
+            let currentSlideIndex = 0;
+            showSlide(currentSlideIndex);
+
+            // Function to show a specific slide
+            function showSlide(index) {
+                const slides = document.querySelectorAll('.slide');
+                const dots = document.querySelectorAll('.dot');
+
+                if (index >= slides.length) currentSlideIndex = 0;
+                if (index < 0) currentSlideIndex = slides.length - 1;
+
+                // Hide all slides and deactivate dots
+                slides.forEach(slide => slide.style.display = 'none');
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                // Display the current slide and activate the dot
+                slides[currentSlideIndex].style.display = 'block';
+                dots[currentSlideIndex].classList.add('active');
+            }
+
+            // Change slides on arrow click
+            function changeSlide(step) {
+                currentSlideIndex += step;
+                showSlide(currentSlideIndex);
+            }
+
+            // Set a specific slide when dots are clicked
+            function setCurrentSlide(index) {
+                currentSlideIndex = index - 1;
+                showSlide(currentSlideIndex);
+            }
+
+            // Auto slide every 3 seconds
+            setInterval(() => {
+                changeSlide(1);
+            }, 10000);
+
+            // Menu open (mobile)
+            const menuBtn = document.getElementById('menuBtn');
+            const sidebar = document.getElementById('sidebar');
+
+            menuBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('invisible'); // Show/hide the sidebar on mobile
+                console.log({ sidebar: sidebar.classList });
+                // sidebar.classList
+            });
+
+            const themeToggleSwitch = document.getElementById('dark-mode-toggle');
+
+            themeToggleSwitch.addEventListener('change', function () {
+                document.body.classList.toggle('dark-mode');
+            });
+
+            $(document).ready(function () {
+                // Initialize DataTable
+                var table = $('#eventsTable').DataTable({
+                    "dom": '<"top"f>rt<"bottom"lp><"clear">',
+                    "order": [[1, "desc"]] // Default sorting by Date (column index 1)
+                });
+
+                // Event Name Search Filter
+                $('#eventNameSearch').on('keyup', function () {
+                    table.columns(0).search(this.value).draw();
+                });
+
+                // Date Filter
+                $('#dateFilter').on('change', function () {
+                    table.columns(1).search(this.value).draw();
+                });
+
+                // Status Filter
+                $('#statusFilter').on('change', function () {
+                    table.columns(3).search(this.value).draw();
+                });
+
+                // Speaker Filter
+                $('#speakerFilter').on('keyup', function () {
+                    table.columns(2).search(this.value).draw();
+                });
+
+                // Sort By Filter
+                $('#sortBy').on('change', function () {
+                    let sortOption = $(this).val();
+                    if (sortOption === 'mostRecent') {
+                        table.order([1, 'desc']).draw(); // Sort by date (column index 1) descending
+                    } else if (sortOption === 'eventNameAsc') {
+                        table.order([0, 'asc']).draw(); // Sort by event name (column index 0) ascending
+                    } else if (sortOption === 'eventNameDesc') {
+                        table.order([0, 'desc']).draw(); // Sort by event name (column index 0) descending
+                    }
+                });
+
+                // Export button (example, can be extended for actual functionality)
+                $('#exportButton').on('click', function () {
+                    alert('Export functionality not implemented.');
+                });
+
+                // More Options button (example, placeholder for more options)
+                $('#moreOptions').on('click', function () {
+                    alert('More options functionality not implemented.');
+                });
+            });
+        </script>
+</body>
+<!--TODO: Fell ill and won't be able to complete the task to the best of my capabilities,
+     will be submitting with where I was able to reach...
+     I know it's much to ask but please do evaluate what I have done so far
+     thank you. -->
+
+</html>
